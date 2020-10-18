@@ -3145,10 +3145,6 @@ case "$target" in
             echo 1401600 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq
             echo 652800 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 
-            # enable input boost
-            echo "0:1305600 4:1056000" > /sys/module/cpu_boost/parameters/input_boost_freq
-            echo 100 > /sys/module/cpu_boost/parameters/input_boost_ms
-
 	    echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
             # sched_load_boost as -6 is equivalent to target load as 85. It is per cpu tunable.
