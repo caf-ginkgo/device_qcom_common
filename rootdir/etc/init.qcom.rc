@@ -393,6 +393,7 @@ service qcomsysd /system/vendor/bin/qcom-system-daemon
     class main
     user root
     group root diag oem_2901
+    task_profiles ServiceCapacityLow
     disabled
 
 on property:persist.vendor.qcomsysd.enabled=1
@@ -501,11 +502,13 @@ service vendor.qrtr-ns /vendor/bin/qrtr-ns -f
     user vendor_qrtr
     group vendor_qrtr
     capabilities NET_BIND_SERVICE
+    task_profiles ServiceCapacityLow
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
     oneshot
+    task_profiles ServiceCapacityLow
 
 service qmiproxy /system/bin/qmiproxy
     class main
@@ -532,6 +535,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
     class main
     socket vendor_wpa_wlan0 dgram 660 wifi wifi
+    task_profiles ServiceCapacityLow
     disabled
     oneshot
 
@@ -665,17 +669,20 @@ service ssgqmigd /vendor/bin/ssgqmigd
     user radio
     group radio gps system
     socket ssgqmig seqpacket 0660 radio inet
+    task_profiles ServiceCapacityLow
 
 service mlid /vendor/bin/mlid
     class late_start
     user gps
     group gps
     socket mlid stream 0666 gps gps
+    task_profiles ServiceCapacityLow
 
 service loc_launcher /system/vendor/bin/loc_launcher
     class late_start
     user gps
     group gps
+    task_profiles ServiceCapacityLow
 
 service drmdiag /system/vendor/bin/drmdiagapp
     class late_start
@@ -729,11 +736,13 @@ service qvop-daemon /vendor/bin/qvop-daemon
     class late_start
     user system
     group system drmrpc
+    task_profiles ServiceCapacityLow
 
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    task_profiles ServiceCapacityLow
 
 service hostapd_fst /vendor/bin/hw/hostapd -dd -g /data/vendor/wifi/hostapd/global
     class main
@@ -851,6 +860,7 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     class core
     user root
     group root
+    task_profiles ServiceCapacityLow
     disabled
 
 service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance_little_big.conf
@@ -919,6 +929,7 @@ service time_daemon /vendor/bin/time_daemon
     user system
     group system
     capabilities SYS_TIME
+    task_profiles ServiceCapacityLow
 
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
@@ -938,6 +949,7 @@ service vendor.hbtp /vendor/bin/hbtp_daemon
      user system
      group system
      capabilities SYS_NICE
+     task_profiles ServiceCapacityLow
      disabled
 
 service chre /vendor/bin/chre
