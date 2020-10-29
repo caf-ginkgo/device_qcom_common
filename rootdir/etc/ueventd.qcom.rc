@@ -472,3 +472,9 @@ firmware_directories /vendor/firmware_mnt/image/
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_raw                     0664    system  system
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_scale                   0664    system  system
 /sys/devices/platform/soc/*.i2c/i2c-*/*-*/iio:device*   in_temp_scale_available         0664    system  system
+
+# fpc fingerprint
+/sys/devices/platform/soc/soc:fpc1020*  hw_reset          0660 system system
+/sys/devices/platform/soc/soc:fpc1020*  irq               0660 system system
+/sys/devices/platform/soc/soc:fpc1020*  wakeup_enable     0660 system system
+/sys/devices/platform/soc/soc:fpc1020*  fingerdown_wait   0220 system system
